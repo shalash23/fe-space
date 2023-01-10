@@ -4,8 +4,25 @@ import {
   ThemeProvider,
   responsiveFontSizes,
 } from "@mui/material/styles";
-import { Outlet } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
+import NavBar from "./Components/NavBar/NavBar";
+import { defaultTheme } from "./helpers/theme";
+import Home from "./Pages/Home";
 
 export default function App() {
-  return <div>Hello World</div>;
+  const location = useLocation();
+  const theme = createTheme(defaultTheme);
+  console.log(location);
+
+  return (
+    <>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <NavBar />
+        <Routes>
+          <Route path="/" index element={<Home />} />
+        </Routes>
+      </ThemeProvider>
+    </>
+  );
 }

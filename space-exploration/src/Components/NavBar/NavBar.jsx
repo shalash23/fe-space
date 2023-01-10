@@ -1,1 +1,3 @@
-// TODO create a navbar component
+export default function NavBar() {
+  return <div>Hello World</div>;
+}
